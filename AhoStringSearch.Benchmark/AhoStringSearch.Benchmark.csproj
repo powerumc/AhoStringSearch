@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <RootNamespace>AhoTextSearch.Benchmark</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\AhoStringSearch\AhoStringSearch.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.12"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="negative-words.txt"/>
+        <Content Include="negative-words.txt">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+</Project>

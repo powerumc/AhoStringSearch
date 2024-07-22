@@ -1,0 +1,10 @@
+
+[*]
+
+# ReSharper properties
+resharper_braces_for_foreach = required
+resharper_braces_for_ifelse = required
+resharper_braces_redundant = true
+
+# Microsoft .NET properties
+csharp_prefer_braces = true:none

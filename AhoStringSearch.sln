@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhoStringSearch", "AhoStringSearch\AhoStringSearch.csproj", "{75947DB8-F280-4E45-B979-3CAF2D6FF8D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhoStringSearch.Tests", "AhoStringSearch.Tests\AhoStringSearch.Tests.csproj", "{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhoStringSearch.Benchmark", "AhoStringSearch.Benchmark\AhoStringSearch.Benchmark.csproj", "{6F50D183-1213-428F-A4CA-82A102047652}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{75947DB8-F280-4E45-B979-3CAF2D6FF8D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75947DB8-F280-4E45-B979-3CAF2D6FF8D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75947DB8-F280-4E45-B979-3CAF2D6FF8D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75947DB8-F280-4E45-B979-3CAF2D6FF8D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F50D183-1213-428F-A4CA-82A102047652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F50D183-1213-428F-A4CA-82A102047652}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F50D183-1213-428F-A4CA-82A102047652}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F50D183-1213-428F-A4CA-82A102047652}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
