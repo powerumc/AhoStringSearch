@@ -6,6 +6,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhoStringSearch.Tests", "Ah
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhoStringSearch.Benchmark", "AhoStringSearch.Benchmark\AhoStringSearch.Benchmark.csproj", "{6F50D183-1213-428F-A4CA-82A102047652}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{8FA68973-D3F6-4A2B-B3FF-EACA636D58E4}"
+	ProjectSection(SolutionItems) = preProject
+		assets\benchmark-results.png = assets\benchmark-results.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +25,9 @@ Global
 		{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F50D183-1213-428F-A4CA-82A102047652}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F50D183-1213-428F-A4CA-82A102047652}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F50D183-1213-428F-A4CA-82A102047652}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F50D183-1213-428F-A4CA-82A102047652}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F50D183-1213-428F-A4CA-82A102047652}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{6F50D183-1213-428F-A4CA-82A102047652}.Debug|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

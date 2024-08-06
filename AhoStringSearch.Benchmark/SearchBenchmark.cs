@@ -5,8 +5,9 @@ namespace AhoTextSearch.Benchmark;
 [SimpleJob]
 public class SearchBenchmark
 {
-    private AhoStringSearch _search;
-    private string[] _strings;
+    private const string Input = "You are zombie";
+    private AhoStringSearch _search = null!;
+    private string[] _strings = null!;
 
     [GlobalSetup]
     public void Setup()
@@ -28,9 +29,15 @@ public class SearchBenchmark
     }
 
     [Benchmark]
-    public void AhoTextSearchSearch()
+    public void AhoTextSearchAll()
     {
-        _ = _search.SearchAll("You are zombie").ToArray();
+        _ = _search.SearchAll(Input).ToArray();
+    }
+
+    [Benchmark]
+    public void AhoTextSearch()
+    {
+        _ = _search.Search(Input);
     }
 
     [Benchmark]
@@ -38,10 +45,13 @@ public class SearchBenchmark
     {
         foreach (var str in _strings)
         {
-            if (str.Contains("You are zombie"))
+            if (!str.Contains(Input))
             {
-                _ = str;
+                continue;
             }
+
+            _ = str;
+            return;
         }
     }
 }

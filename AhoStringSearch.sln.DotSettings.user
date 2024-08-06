@@ -1,17 +1,26 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1f2a04ab_002Df832_002D403f_002Dbd6d_002Da72bb4ba6e3d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;And&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1f2a04ab_002Df832_002D403f_002Dbd6d_002Da72bb4ba6e3d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;Or&gt;
+    &lt;And&gt;
+      &lt;TestAncestor&gt;
+        &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.SerializeTests&lt;/TestId&gt;
+        &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.AhoStringSearchTests.SearchAllTest&lt;/TestId&gt;
+        &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.AhoStringSearchTests&lt;/TestId&gt;
+      &lt;/TestAncestor&gt;
+      &lt;TestAncestor&gt;
+        &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.SerializeTests.ContextReadTest&lt;/TestId&gt;
+      &lt;/TestAncestor&gt;
+    &lt;/And&gt;
     &lt;TestAncestor&gt;
-      &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.SerializeTests&lt;/TestId&gt;
-      &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.AhoStringSearchTests.SearchAllTest&lt;/TestId&gt;
       &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.AhoStringSearchTests&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.SerializeTests.BuildTime&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.SerializeTests.LoadTrieTime&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.SerializeTests.BuildIteration100&lt;/TestId&gt;
+      &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.SerializeTests.LoadTrieIteration100&lt;/TestId&gt;
     &lt;/TestAncestor&gt;
-    &lt;TestAncestor&gt;
-      &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.SerializeTests.ContextReadTest&lt;/TestId&gt;
-    &lt;/TestAncestor&gt;
-  &lt;/And&gt;
+  &lt;/Or&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9a259815_002D8e80_002D495b_002D8bdc_002Db153775cce5d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="SerializeTest2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9a259815_002D8e80_002D495b_002D8bdc_002Db153775cce5d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="SerializeTest2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.SerializeTests&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::D217158D-E90B-4DA5-A1D1-79ACB17F64A3::net8.0::AhoTextSearch.Tests.AhoStringSearchTests.SearchAllTest&lt;/TestId&gt;

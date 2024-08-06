@@ -2,43 +2,46 @@ using AhoTextSearch.Serialization;
 
 namespace AhoTextSearch;
 
+/// <summary>
+///     Aho-Corasick trie node.
+/// </summary>
 public class TrieNode
 {
     public TrieNode()
     {
     }
 
-    internal TrieNode(int id)
+    private TrieNode(int id)
     {
         Id = id;
     }
 
-    internal TrieNode(TrieNodeInternal node)
+    internal TrieNode(TrieNodeItem node)
     {
         Id = node.Id;
         Children = node.Children.ToDictionary(o => o.Key, v => new TrieNode(v.Value));
         Outputs = node.Outputs.ToList();
     }
-    
+
+    public Dictionary<char, TrieNode> Children { get; private set; } = new();
+    public TrieNode? Fail { get; private set; }
+    public List<string> Outputs { get; private set; } = [];
+    public int Id { get; }
+
     internal void UpdateFailurePointer(TrieNode node)
     {
         Fail = node;
     }
-    
+
     internal void UpdateChildren(Dictionary<char, TrieNode> children)
     {
         Children = children;
     }
-    
+
     internal void UpdateOutputs(List<string> outputs)
     {
         Outputs = outputs;
     }
-
-    public Dictionary<char, TrieNode> Children { get; private set; } = new();
-    public TrieNode? Fail { get; set; }
-    public List<string> Outputs { get; private set; } = [];
-    public int Id { get; }
 
     private int NextId()
     {
@@ -74,20 +77,21 @@ public class TrieNode
         while (queue.Count > 0)
         {
             var node = queue.Dequeue();
-            foreach (var pair in node.Children)
+            foreach (var children in node.Children)
             {
-                var c = pair.Key;
-                var child = pair.Value;
-                queue.Enqueue(child);
+                var key = children.Key;
+                var value = children.Value;
+                
+                queue.Enqueue(value);
 
                 var fail = node.Fail;
-                while (fail != null && !fail.Children.ContainsKey(c))
+                while (fail != null && !fail.Children.ContainsKey(key))
                 {
                     fail = fail.Fail;
                 }
 
-                child.Fail = fail?.Children[c] ?? this;
-                child.Outputs.AddRange(child.Fail.Outputs);
+                value.Fail = fail?.Children[key] ?? this;
+                value.Outputs.AddRange(value.Fail.Outputs);
             }
         }
     }
@@ -111,7 +115,7 @@ public static class TrieNodeExtension
         DeserializeNode(root, br);
     }
 
-    private static void SerializeNode(this TrieNode root, BinaryWriter binaryWriter)
+    private static void SerializeNode(this TrieNode root, BinaryWriter bw)
     {
         var queue = new Queue<TrieNode>();
         var nodeToId = new Dictionary<TrieNode, int>();
@@ -123,34 +127,32 @@ public static class TrieNodeExtension
         while (queue.Count > 0)
         {
             var node = queue.Dequeue();
-            // Serialize Fail pointer as an ID, or -1 if null
-            binaryWriter.Write(node.Fail != null ? nodeToId[node.Fail] : -1);
-            // Serialize Outputs
-            binaryWriter.Write(node.Outputs.Count);
+            bw.Write(node.Fail != null ? nodeToId[node.Fail] : -1);
+            bw.Write(node.Outputs.Count);
             foreach (var output in node.Outputs)
             {
-                binaryWriter.Write(output);
+                bw.Write(output);
             }
 
-            // Serialize Children
-            binaryWriter.Write(node.Children.Count);
-            foreach (var kvp in node.Children)
+            bw.Write(node.Children.Count);
+            foreach (var children in node.Children)
             {
-                var child = kvp.Value;
+                var key = children.Key;
+                var child = children.Value;
+                
                 if (!nodeToId.ContainsKey(child))
                 {
                     nodeToId[child] = nextId++;
                     queue.Enqueue(child);
                 }
 
-                // Write character key and child node ID
-                binaryWriter.Write(kvp.Key);
-                binaryWriter.Write(nodeToId[child]);
+                bw.Write(key);
+                bw.Write(nodeToId[child]);
             }
         }
     }
 
-    private static void DeserializeNode(this TrieNode root, BinaryReader binaryReader)
+    private static void DeserializeNode(this TrieNode root, BinaryReader br)
     {
         var idToNode = new Dictionary<int, TrieNode>();
         var failPointerUpdates = new Dictionary<TrieNode, int>();
@@ -163,12 +165,12 @@ public static class TrieNodeExtension
         while (queue.Count > 0)
         {
             var node = queue.Dequeue();
-            var failId = binaryReader.ReadInt32();
+            var failId = br.ReadInt32();
             if (failId != -1)
             {
-                if (idToNode.ContainsKey(failId))
+                if (idToNode.TryGetValue(failId, out var value))
                 {
-                    node.Fail = idToNode[failId];
+                    node.UpdateFailurePointer(value);
                 }
                 else
                 {
@@ -176,39 +178,38 @@ public static class TrieNodeExtension
                 }
             }
 
-            var outputsCount = binaryReader.ReadInt32();
+            var outputsCount = br.ReadInt32();
             for (var i = 0; i < outputsCount; i++)
             {
-                node.Outputs.Add(binaryReader.ReadString());
+                node.Outputs.Add(br.ReadString());
             }
 
-            var childrenCount = binaryReader.ReadInt32();
+            var childrenCount = br.ReadInt32();
             for (var i = 0; i < childrenCount; i++)
             {
-                var key = binaryReader.ReadChar();
-                var childId = binaryReader.ReadInt32();
+                var key = br.ReadChar();
+                var childId = br.ReadInt32();
 
                 var childNode = new TrieNode();
-                if (!idToNode.ContainsKey(childId))
+                if (!idToNode.TryGetValue(childId, out var value))
                 {
                     idToNode[childId] = childNode;
                     queue.Enqueue(childNode);
                 }
                 else
                 {
-                    childNode = idToNode[childId];
+                    childNode = value;
                 }
 
                 node.Children[key] = childNode;
             }
         }
 
-        // Resolve Fail pointers that couldn't be set during the initial pass
         foreach (var item in failPointerUpdates)
         {
             if (idToNode.TryGetValue(item.Value, out var failNode))
             {
-                item.Key.Fail = failNode;
+                item.Key.UpdateFailurePointer(failNode);
             }
         }
     }

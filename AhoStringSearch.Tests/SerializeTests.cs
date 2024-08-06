@@ -1,17 +1,11 @@
+using System.Diagnostics;
 using AhoTextSearch.Serialization;
 using Xunit.Abstractions;
 
 namespace AhoTextSearch.Tests;
 
-public class SerializeTests
+public class SerializeTests(ITestOutputHelper output)
 {
-    private readonly ITestOutputHelper _output;
-
-    public SerializeTests(ITestOutputHelper output)
-    {
-        _output = output;
-    }
-
     [Fact]
     public void SerializeTest()
     {
@@ -25,7 +19,7 @@ public class SerializeTests
 
         foreach (var str in results)
         {
-            _output.WriteLine(str);
+            output.WriteLine(str);
         }
     }
 
@@ -41,7 +35,7 @@ public class SerializeTests
 
         using var fs = new FileStream("test.trie", FileMode.Create);
         using var bw = new BinaryWriter(fs);
-        var context = new TrieNodeContext();
+        var context = new TrieSerializationContext();
         context.Write(trie, bw);
     }
 
@@ -51,16 +45,16 @@ public class SerializeTests
         ContextWriteTest();
         using var fs = new FileStream("test.trie", FileMode.Open);
         using var br = new BinaryReader(fs);
-        var context = new TrieNodeContext();
+        var context = new TrieSerializationContext();
         var root = context.Read(br);
 
         var search = AhoStringSearch.CreateFrom(root);
         var results = search.SearchAll("my his he is good").ToArray();
         foreach (var str in results)
         {
-            _output.WriteLine(str);
+            output.WriteLine(str);
         }
-        
+
         Assert.Equal(results, ["his", "he"]);
     }
 
@@ -82,5 +76,55 @@ public class SerializeTests
         trie.LoadFrom("dic.trie");
 
         return trie;
+    }
+
+    [Fact]
+    public void BuildIteration100()
+    {
+        var stopwatch = Stopwatch.StartNew();
+        for (var i = 0; i < 1000; i++)
+        {
+            var search = new AhoStringSearch();
+            var trie = search.CreateTrie();
+            var words = File.ReadAllLines("../../../../AhoStringSearch.Benchmark/negative-words.txt");
+
+            foreach (var word in words)
+            {
+                trie.AddString(word);
+            }
+
+            trie.Build();
+        }
+
+        stopwatch.Stop();
+
+        output.WriteLine(stopwatch.ElapsedMilliseconds.ToString());
+    }
+
+    [Fact]
+    public void LoadTrieIteration100()
+    {
+        var search = new AhoStringSearch();
+        var trie = search.CreateTrie();
+        var words = File.ReadAllLines("../../../../AhoStringSearch.Benchmark/negative-words.txt");
+
+        foreach (var word in words)
+        {
+            trie.AddString(word);
+        }
+
+        trie.Build();
+        trie.SaveTrie("./words.trie");
+
+        var stopwatch = Stopwatch.StartNew();
+        search = new AhoStringSearch();
+        trie = search.CreateTrie();
+        for (var i = 0; i < 1000; i++)
+        {
+            trie.LoadFrom("./words.trie");
+        }
+
+        stopwatch.Stop();
+        output.WriteLine(stopwatch.ElapsedMilliseconds.ToString());
     }
 }
