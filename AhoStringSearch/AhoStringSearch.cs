@@ -53,6 +53,30 @@ public class AhoStringSearch
         return string.Empty;
     }
 
+    /// <summary>
+    ///     Returns all matching strings.
+    /// </summary>
+    /// <param name="input">Input string</param>
+    /// <returns>
+    ///     Returns all matching strings.
+    /// </returns>
+    public IEnumerable<string> SearchAll(string input)
+    {
+        var node = _root;
+        foreach (var c in input)
+        {
+            while (node != null && !node.Children.ContainsKey(c))
+            {
+                node = node.Fail;
+            }
+
+            node = node?.Children[c] ?? _root;
+            foreach (var output in node.Outputs)
+            {
+                yield return output;
+            }
+        }
+    }
 #if NETSTANDARD2_1_OR_GREATER
     /// <summary>
     ///     Returns the range of the first matching string.
@@ -86,33 +110,7 @@ public class AhoStringSearch
 
         return new Range(0, 0);
     }
-#endif
 
-    /// <summary>
-    ///     Returns all matching strings.
-    /// </summary>
-    /// <param name="input">Input string</param>
-    /// <returns>
-    ///     Returns all matching strings.
-    /// </returns>
-    public IEnumerable<string> SearchAll(string input)
-    {
-        var node = _root;
-        foreach (var c in input)
-        {
-            while (node != null && !node.Children.ContainsKey(c))
-            {
-                node = node.Fail;
-            }
-
-            node = node?.Children[c] ?? _root;
-            foreach (var output in node.Outputs)
-            {
-                yield return output;
-            }
-        }
-    }
-#if NETSTANDARD2_1_OR_GREATER
     /// <summary>
     ///     Returns all ranges of matching strings.
     /// </summary>

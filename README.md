@@ -29,7 +29,7 @@ Assert.Equal("his", actual);
 
 ## Performance
 
-Searching for the string `zombie` from 4,783 string word rules:
+Searching for the string 4,783rd `zombie` from 4,783 string word rules:
 
 | Method           | Mean        | Error     | StdDev    |
 |----------------- |------------:|----------:|----------:|
@@ -59,7 +59,7 @@ context.Write(trie, bw);
 using var fs = new FileStream("test.trie", FileMode.Open);
 using var br = new BinaryReader(fs);
 var context = new TrieSerializationContext();
-var root = context.Read(br);
+var root = context.Load(br);
 
 var search = AhoStringSearch.CreateFrom(root);
 ```

@@ -31,7 +31,7 @@ Assert.Equal("his", actual);
 
 ## 성능
 
-4,783개 문자열 단어 규칙 중 `zomebie` 문자열을 찾는 경우
+4,783개 문자열 단어 규칙 중 4,783번째 `zombie` 문자열을 찾는 경우
 
 | Method           | Mean        | Error     | StdDev    |
 |----------------- |------------:|----------:|----------:|
@@ -61,7 +61,7 @@ context.Write(trie, bw);
 using var fs = new FileStream("test.trie", FileMode.Open);
 using var br = new BinaryReader(fs);
 var context = new TrieSerializationContext();
-var root = context.Read(br);
+var root = context.Load(br);
 
 var search = AhoStringSearch.CreateFrom(root);
 ```

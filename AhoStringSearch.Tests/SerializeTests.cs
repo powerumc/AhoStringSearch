@@ -46,7 +46,7 @@ public class SerializeTests(ITestOutputHelper output)
         using var fs = new FileStream("test.trie", FileMode.Open);
         using var br = new BinaryReader(fs);
         var context = new TrieSerializationContext();
-        var root = context.Read(br);
+        var root = context.Load(br);
 
         var search = AhoStringSearch.CreateFrom(root);
         var results = search.SearchAll("my his he is good").ToArray();
