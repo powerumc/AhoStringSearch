@@ -10,7 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\AhoStringSearch\AhoStringSearch.csproj"/>
+        <ProjectReference Include="..\..\src\AhoStringSearch\AhoStringSearch.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

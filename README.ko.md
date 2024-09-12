@@ -9,6 +9,12 @@ Aho-Corasick 알고리즘은 Alfred V. Aho와 Margaret J. Corasick이 1975년에
 이는 사전과 유사한 유한 상태 기계를 구성하여 텍스트 내에서 효율적인 다중 패턴 일치를 허용합니다.
 
 
+## 설치
+
+```bash
+dotnet add package AhoStringSearch
+```
+
 ## API
 
 입력된 `input` 문자열에 문자열 패턴과 일치하는지 검사
@@ -31,7 +37,7 @@ Assert.Equal("his", actual);
 
 ## 성능
 
-4,783개 문자열 단어 규칙 중 4,783번째 `zombie` 문자열을 찾는 경우
+4,783개 문자열 단어 규칙 중 4,783번째 `zombie` 문자열을 찾는 경우 ([negative-words.txt](src/AhoStringSearch.Benchmark/negative-words.txt))
 
 | Method           | Mean        | Error     | StdDev    |
 |----------------- |------------:|----------:|----------:|

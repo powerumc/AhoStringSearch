@@ -2,18 +2,24 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhoStringSearch", "src\AhoStringSearch\AhoStringSearch.csproj", "{75947DB8-F280-4E45-B979-3CAF2D6FF8D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhoStringSearch.Tests", "src\AhoStringSearch.Tests\AhoStringSearch.Tests.csproj", "{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhoStringSearch.Benchmark", "src\AhoStringSearch.Benchmark\AhoStringSearch.Benchmark.csproj", "{6F50D183-1213-428F-A4CA-82A102047652}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{8FA68973-D3F6-4A2B-B3FF-EACA636D58E4}"
 	ProjectSection(SolutionItems) = preProject
 		assets\benchmark-results.png = assets\benchmark-results.png
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2D71A0B4-B643-4FF8-B051-3F29C6BB550C}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{970FAA0B-A71A-4349-B37A-B8FDE7C14BB3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DA6EE131-EE7D-4BEC-B677-02C7F9550FD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhoStringSearch.Tests", "tests\AhoStringSearch.Tests\AhoStringSearch.Tests.csproj", "{BD2113EB-3071-4F9D-A70D-10711118E15F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AhoStringSearch.Benchmark", "tests\AhoStringSearch.Benchmark\AhoStringSearch.Benchmark.csproj", "{AF97D00D-BEA2-42BF-8387-374C6FA5AD2E}"
+EndProject
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,18 +31,18 @@ Global
 		{75947DB8-F280-4E45-B979-3CAF2D6FF8D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75947DB8-F280-4E45-B979-3CAF2D6FF8D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75947DB8-F280-4E45-B979-3CAF2D6FF8D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D217158D-E90B-4DA5-A1D1-79ACB17F64A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F50D183-1213-428F-A4CA-82A102047652}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F50D183-1213-428F-A4CA-82A102047652}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F50D183-1213-428F-A4CA-82A102047652}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{6F50D183-1213-428F-A4CA-82A102047652}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{BD2113EB-3071-4F9D-A70D-10711118E15F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD2113EB-3071-4F9D-A70D-10711118E15F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD2113EB-3071-4F9D-A70D-10711118E15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD2113EB-3071-4F9D-A70D-10711118E15F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF97D00D-BEA2-42BF-8387-374C6FA5AD2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF97D00D-BEA2-42BF-8387-374C6FA5AD2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF97D00D-BEA2-42BF-8387-374C6FA5AD2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF97D00D-BEA2-42BF-8387-374C6FA5AD2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{75947DB8-F280-4E45-B979-3CAF2D6FF8D3} = {2D71A0B4-B643-4FF8-B051-3F29C6BB550C}
-		{6F50D183-1213-428F-A4CA-82A102047652} = {2D71A0B4-B643-4FF8-B051-3F29C6BB550C}
-		{D217158D-E90B-4DA5-A1D1-79ACB17F64A3} = {2D71A0B4-B643-4FF8-B051-3F29C6BB550C}
+		{BD2113EB-3071-4F9D-A70D-10711118E15F} = {DA6EE131-EE7D-4BEC-B677-02C7F9550FD2}
+		{AF97D00D-BEA2-42BF-8387-374C6FA5AD2E} = {DA6EE131-EE7D-4BEC-B677-02C7F9550FD2}
 	EndGlobalSection
 EndGlobal

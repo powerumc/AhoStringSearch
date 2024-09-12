@@ -1,0 +1,24 @@
+<Project>
+    <PropertyGroup>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>default</LangVersion>
+        <Authors>Junil Um</Authors>
+        <Description>C# implementation of the Aho-Corasick algorithm</Description>
+        <PackageProjectUrl>https://github.com/powerumc/AhoStringSearch</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/powerumc/AhoStringSearch/blob/main/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/powerumc/AhoStringSearch</RepositoryUrl>
+        <PackageTags>aho-corasick, trie, search, filter, search-string</PackageTags>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="SonarAnalyzer.CSharp" Version="9.32.0.97167">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="IDisposableAnalyzers" Version="4.0.8">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+</Project>
